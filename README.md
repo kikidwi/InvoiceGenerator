@@ -1,55 +1,44 @@
-# ⚡ InvoiceFlow - Generator Invoice Kilat
+# Invoice Generator
 
-InvoiceFlow adalah aplikasi pembuat invoice mandiri berbasis web (*Single Page Application*) yang dirancang khusus dengan workflow tercepat. Dikelola **100% di browser Anda (Client-side)** tanpa server, tanpa perlu mendaftar atau login, dan data tersimpan aman di perangkat Anda secara otomatis!
+Aplikasi pembuat invoice / faktur berbasis web (Single Page Application) yang berjalan murni pada sisi klien (client-side) tanpa memerlukan database atau arsitektur server terpisah. Aplikasi ini dibuat agar pengguna dapat langsung membuat invoice tanpa harus melalui tahapan registrasi.
 
-Aplikasi ini ditujukan bagi freelancer, agensi, dan perusahaan kecil di Indonesia yang membutuhkan *invoice* atau *faktur* profesional secara instan dengan desain premium hanya dalam hitungan detik.
+## Fitur Utama
 
-## ✨ Fitur Utama
+- Tanpa Autentikasi: Aplikasi dapat langsung digunakan tanpa perlu membuat akun, login, atau terikat layanan backend.
+- 5 Pilihan Template: Menyediakan lima gaya tata letak untuk invoice (Modern, Minimalis, Korporat, Kreatif, dan Mode Gelap).
+- Live Preview Aktual: Tampilan fisik invoice otomatis disesuaikan di layar seiring dengan tiap data yang dimasukkan ke dalam form (ukuran presisi standar A4).
+- Penyimpanan Lokal (Auto-Save): Draf invoice yang sedang dibuat secara berkala disimpan otomatis di dalam penyimpanan lokal (localStorage) browser pengguna untuk mencegah kehilangan data.
+- Ekspor PDF: Menyediakan unduhan langsung untuk membuat file PDF berdasarkan tampilan preview akhir yang dihasilkan.
+- Pelokalan Indonesia: Menggunakan format nilai tukar Rupiah (IDR) beserta terjemahan antarmuka Bahasa Indonesia sebagai standar awal.
 
-- **🚀 Tanpa Login / Pendaftaran:** Buka aplikasi dan lansung buat invoice Anda seketika.
-- **🎨 5 Desain Template Premium:** Pilih gaya invoice sesuai identitas merek Anda (*Modern, Minimalis, Korporat, Kreatif, dan Mode Gelap*).
-- **👁️ Live Preview Aktual (WYSIWYG):** Semua perubahan di form secara *real-time* terlihat pada preview dengan rasio presisi ukuran kertas A4.
-- **💾 Auto-Save ke Browser:** Jika tab / browser tertutup secara tak sengaja, *draf* desain Anda belum hilang berkat integrasi penyimpanan di `localStorage`.
-- **📥 Ekspor ke PDF Otomatis:** Fitur utama terintegrasi, cukup sekali klik dan invoice profesional otomatis terunduh (*kroping layout* telah disesuaikan tepat sesuai banyaknya item tagihan tanpa mengambakan ruang putih kosong).
-- **🇮🇩 Diformat khusus Indonesia:** Default penomoran Rp (Rupiah Rupiah), perhitungan diskon serta PPN, dan antarmukanya sudah menggunakan *Bahasa Indonesia*.
+## Cara Penggunaan
 
-## 🛠️ Stack Teknologi
+### Jika Mengakses Melalui Web / Link
+1. Buka link ketersediaan aplikasi.
+2. Masukkan seluruh informasi sesuai kebutuhan pada form (Data Pengirim, Klien, Nominal Item Invoice, dan Catatan Pajak/Diskon).
+3. Anda bisa mengubah gaya template atau warna dasar sewaktu-waktu di bagian menu "Pilih Desain Template".
+4. Periksa kecocokan data melalui panel "Live Preview" di sebelah kanan form.
+5. Klik "Download PDF". File invoice otomatis terunduh di penyimpanan Anda dengan dimensi kertas proporsional dengan panjang konten.
 
-- **Vanilla JavaScript (ES6+)**
-- **Vite** (Build Tool super cepat)
-- **Vanilla CSS** (Sistem UI Component dan variabel moduler)
-- **html2pdf.js** (Sistem rendering untuk PDF ekspor beresolusi tinggi di sisi *client*)
+### Jika Menjalankan Proyek Via Lokal / Clone
+Pastikan Node.js sudah terinstal secara sistem dengan benar.
 
-## 💻 Panduan Instalasi & Menjalankan Lokal
-
-Karena aplikasi ini sangat ringan, Anda bisa menjalankannya dengan mudah di direktori lokal Anda:
-
-1. Pastikan Anda memiliki lingkungan [Node.js](https://nodejs.org/) yang terpasang.
-2. Clone repository ini:
-   \`\`\`bash
+1. Clone repositori ini:
+   ```bash
    git clone https://github.com/kikidwi/InvoiceGenerator.git
+   ```
+2. Arahkan terminal / command line masuk ke dalam folder proyek:
+   ```bash
    cd InvoiceGenerator
-   \`\`\`
-3. Instal semua dependensi:
-   \`\`\`bash
+   ```
+3. Instal dependensi pengembangan pendukung:
+   ```bash
    npm install
-   \`\`\`
-4. Jalankan server pengembangan Vite:
-   \`\`\`bash
+   ```
+4. Jalankan *development server*:
+   ```bash
    npm run dev
-   \`\`\`
-5. Buka tautan lokal yang disediakan (misal: \`http://localhost:5173\`) di browser kesayangan Anda.
+   ```
+5. Aplikasi akan berjalan di environment lokal (seperti `http://localhost:5173`) dan dapat Anda uji langsung di dalam web browser Anda.
 
-## 📦 Build Produksi
-
-Untuk mendeploy/mendistribusikannya ke lingkungan produksi mandiri (misal: GitHub Pages, Netlify, Vercel), silakan build project dengan:
-
-\`\`\`bash
-npm run build
-\`\`\`
-
-Aplikasi statik (*dist/*) bisa di-*host* di penyedia layanan manapun.
-
----
-
-*Dibuat untuk mempercepat proses penagihan agar Anda dapat fokus pada apa yang penting—pekerjaan kreatif Anda.* ✨
+Untuk mendistribusikan kode ke web *hosting*, jalankan instruksi `npm run build` dan gunakan hasil keluaran yang berada dalam *folder* `dist`.
