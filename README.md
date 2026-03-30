@@ -4,12 +4,9 @@ Aplikasi pembuat invoice / faktur berbasis web (Single Page Application) yang be
 
 ## Fitur Utama
 
-- Tanpa Autentikasi: Aplikasi dapat langsung digunakan tanpa perlu membuat akun, login, atau terikat layanan backend.
-- 5 Pilihan Template: Menyediakan lima gaya tata letak untuk invoice (Modern, Minimalis, Korporat, Kreatif, dan Mode Gelap).
-- Live Preview Aktual: Tampilan fisik invoice otomatis disesuaikan di layar seiring dengan tiap data yang dimasukkan ke dalam form (ukuran presisi standar A4).
+- Live Preview : Tampilan invoice otomatis disesuaikan di layar seiring dengan tiap data yang dimasukkan ke dalam form (ukuran presisi standar A4).
 - Penyimpanan Lokal (Auto-Save): Draf invoice yang sedang dibuat secara berkala disimpan otomatis di dalam penyimpanan lokal (localStorage) browser pengguna untuk mencegah kehilangan data.
 - Ekspor PDF: Menyediakan unduhan langsung untuk membuat file PDF berdasarkan tampilan preview akhir yang dihasilkan.
-- Pelokalan Indonesia: Menggunakan format nilai tukar Rupiah (IDR) beserta terjemahan antarmuka Bahasa Indonesia sebagai standar awal.
 
 ## Cara Penggunaan
 
