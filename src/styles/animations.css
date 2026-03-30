@@ -1,0 +1,232 @@
+/* ============================================================
+   InvoiceFlow — Animations & Micro-interactions
+   ============================================================ */
+
+/* ── Keyframes ──────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.05); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes toastSlideIn {
+  from { opacity: 0; transform: translateX(100%); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes toastSlideOut {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(100%); }
+}
+
+@keyframes ripple {
+  0%   { transform: scale(0); opacity: 0.5; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ── Animation Utilities ────────────────────────────────── */
+.animate-fade-in    { animation: fadeIn var(--transition-base) forwards; }
+.animate-fade-in-up { animation: fadeInUp 0.4s cubic-bezier(0.4,0,0.2,1) forwards; }
+.animate-scale-in   { animation: scaleIn 0.3s cubic-bezier(0.4,0,0.2,1) forwards; }
+.animate-float      { animation: float 3s ease-in-out infinite; }
+.animate-pulse      { animation: pulse 2s ease-in-out infinite; }
+.animate-spin       { animation: spin 1s linear infinite; }
+
+/* Staggered children */
+.stagger-children > * { animation: fadeInUp 0.4s cubic-bezier(0.4,0,0.2,1) both; }
+.stagger-children > *:nth-child(1)  { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2)  { animation-delay: 60ms; }
+.stagger-children > *:nth-child(3)  { animation-delay: 120ms; }
+.stagger-children > *:nth-child(4)  { animation-delay: 180ms; }
+.stagger-children > *:nth-child(5)  { animation-delay: 240ms; }
+.stagger-children > *:nth-child(6)  { animation-delay: 300ms; }
+.stagger-children > *:nth-child(7)  { animation-delay: 360ms; }
+.stagger-children > *:nth-child(8)  { animation-delay: 420ms; }
+
+/* ── Page Transition ────────────────────────────────────── */
+.page-transition {
+  animation: fadeInUp 0.35s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+/* ── Toast Notifications ────────────────────────────────── */
+#toast-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  min-width: 300px;
+  max-width: 420px;
+  box-shadow: var(--shadow-lg);
+  pointer-events: all;
+  animation: toastSlideIn 0.3s cubic-bezier(0.4,0,0.2,1) forwards;
+  border-left: 3px solid var(--toast-color, var(--primary));
+}
+.toast.removing { animation: toastSlideOut 0.3s ease forwards; }
+
+.toast-icon { font-size: 1.2rem; flex-shrink: 0; }
+.toast-body { flex: 1; }
+.toast-title { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); }
+.toast-message { font-size: 0.8rem; color: var(--text-secondary); margin-top: 2px; }
+.toast-close { color: var(--text-muted); cursor: pointer; font-size: 1rem; padding: 2px; flex-shrink: 0; background: none; border: none; transition: color var(--transition-fast); }
+.toast-close:hover { color: var(--text-primary); }
+
+.toast.success { --toast-color: var(--success); }
+.toast.error   { --toast-color: var(--danger); }
+.toast.warning { --toast-color: var(--warning); }
+.toast.info    { --toast-color: var(--info); }
+
+/* ── Modal ──────────────────────────────────────────────── */
+#modal-container {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#modal-container.active { pointer-events: all; }
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease forwards;
+}
+
+.modal {
+  position: relative;
+  z-index: 10;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  max-width: 560px;
+  width: calc(100% - 32px);
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  animation: scaleIn 0.25s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+.modal-lg { max-width: 800px; }
+.modal-xl { max-width: 1100px; }
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.modal-title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; }
+.modal-close {
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+.modal-close:hover { background: var(--danger-alpha); color: var(--danger); border-color: var(--danger); }
+
+/* ── Shimmer Skeleton ───────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, var(--bg-elevated) 25%, var(--bg-card) 50%, var(--bg-elevated) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+  color: transparent;
+  user-select: none;
+}
+
+/* ── Gradient Text ──────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1, #a78bfa, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Glow Effects ───────────────────────────────────────── */
+.glow { box-shadow: var(--shadow-glow); }
+.glow-text { text-shadow: 0 0 20px rgba(99,102,241,0.5); }
+
+/* ── Animated Gradient BG ───────────────────────────────── */
+.gradient-bg {
+  background: linear-gradient(-45deg, #0f0f1a, #1a1040, #0f2040, #0f0f1a);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
